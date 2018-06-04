@@ -1,0 +1,21 @@
+<!-- <mat-list>
+  <h2 mat-subheader>Todo List</h2>
+  <mat-list-item *ngFor="let item of todos">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{item.title}}
+        </mat-card-title>
+      </mat-card-header>
+    </mat-card>
+
+  </mat-list-item>
+</mat-list> -->
+<mat-table [dataSource]="todos">
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+    <mat-cell *matCellDef="let todo">{{todo.title}}</mat-cell>
+  </ng-container>
+</mat-table>
+<button (click)="onAdd()">Add task</button>
+<router-outlet></router-outlet>
