@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo-model';
 import { TodoService } from '../todo.service';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatTableDataSource } from '@angular/material';
 import { TodoNewComponent } from '../todo-new/todo-new.component';
 
 @Component({
@@ -10,9 +10,12 @@ import { TodoNewComponent } from '../todo-new/todo-new.component';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
+  todos: Todo[];
+  displayedColumns = ['title'];
+  dataSource = new MatTableDataSource(this.todos);
 
   constructor(private todoService: TodoService, private dialog: MatDialog) { }
-  todos: Todo[];
+
 
   ngOnInit() {
     this.todoService.test();
